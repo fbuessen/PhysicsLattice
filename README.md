@@ -16,6 +16,22 @@ Plotting of three-dimensional Brillouin zones and lattices.
 
 ![](doc/src/assets/plots-3.png)
 
+## Installation
+
+To install the package, you may either download the package file `src/PhysicsLattice.m` and manually place it in a directory that is included in your Mathematica search path, or you can do so by executing the following Mathematica command: 
+```
+URLDownload[
+    "https://raw.githubusercontent.com/fbuessen/PhysicsLattice/main/src/PhysicsLattice.m", 
+    FileNameJoin[{$UserBaseDirectory, "Applications", "PhysicsLattice.m"}]
+]
+```
+The above command will save the file in the location `$UserBaseDirectory/Applications/PhysicsLattice.m`. 
+
+Once the package has been downloaded, it can be activated with the Mathematica command
+```
+<< PhysicsLattice`
+```
+
 ## Supported lattices
 
 Currently, the following lattices are included.
