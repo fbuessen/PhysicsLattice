@@ -1,0 +1,434 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17319,        426]
+NotebookOptionsPosition[     15774,        392]
+NotebookOutlinePosition[     16117,        407]
+CellTagsIndexPosition[     16074,        404]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", " ", 
+    RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], ";"}], "\n", 
+ RowBox[{"<<", "PhysicsLattice`"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"identifiers", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<Square\>\"", ",", " ", "\"\<Triangular\>\"", ",", " ", 
+     "\"\<Honeycomb\>\"", ",", " ", "\"\<Kagome\>\"", ",", " ", 
+     "\"\<Cubic\>\"", ",", " ", "\"\<Diamond\>\"", ",", " ", "\"\<Fcc\>\"", 
+     ",", " ", "\"\<Hyperkagome\>\"", ",", " ", "\"\<Pyrochlore\>\"", ",", 
+     " ", "\"\<Hyperhoneycomb\>\"", ",", " ", "\"\<Hyperoctagon\>\""}], 
+    "}"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8287062928235464`*^9, 3.8287063065512843`*^9}, {
+   3.8287063370042486`*^9, 3.8287063589733753`*^9}, 3.828706594629447*^9, {
+   3.828708060160899*^9, 3.8287080603637223`*^9}, {3.8287081191297803`*^9, 
+   3.8287081343480997`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"152a9ad4-2d13-4b29-88ff-0afe687f3f7b"],
+
+Cell[BoxData[
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"GetLattice", "[", "identifier", "]"}], "//", "Print"}], 
+   "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"identifier", ",", "identifiers"}], "}"}]}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8287065715195627`*^9, 3.828706605097702*^9}, {
+   3.8287066611137433`*^9, 3.828706731035158*^9}, 3.828707227238613*^9},
+ CellLabel->"In[8]:=",ExpressionUUID->"6c50ab4b-f2c6-4393-9e08-bd716e818d17"],
+
+Cell[BoxData[
+ RowBox[{"Do", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"vec", "=", 
+     RowBox[{
+      RowBox[{"GetLattice", "[", "identifier", "]"}], "[", 
+      "\"\<LatticeVectors\>\"", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"rec", "=", 
+     RowBox[{
+      RowBox[{"GetLattice", "[", "identifier", "]"}], "[", 
+      "\"\<ReciprocalLatticeVectors\>\"", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"vec", "[", 
+          RowBox[{"[", "n1", "]"}], "]"}], ".", 
+         RowBox[{"rec", "[", 
+          RowBox[{"[", "n2", "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n1", ",", "1", ",", 
+          RowBox[{"Length", "[", "vec", "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n2", ",", "1", ",", 
+          RowBox[{"Length", "[", "vec", "]"}]}], "}"}]}], "]"}], "//", 
+      "MatrixForm"}], "//", "Print"}], ";"}], "\[IndentingNewLine]", ",", 
+   RowBox[{"{", 
+    RowBox[{"identifier", ",", "identifiers"}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8287070094258013`*^9, 3.828707235394744*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"37287c65-458e-4e80-83f6-237362cea49c"],
+
+Cell[BoxData[{
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Honeycomb\>\"", ",", 
+       RowBox[{"Type", "\[Rule]", "ExtendedBZ"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Honeycomb\>\"", ",", 
+       RowBox[{"Type", "\[Rule]", "FirstBZ"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Honeycomb\>\"", ",", 
+       RowBox[{"LatticeConstant", "\[Rule]", "1"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Honeycomb\>\"", ",", 
+       RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Diamond\>\"", ",", 
+       RowBox[{"Type", "\[Rule]", "ExtendedBZ"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Diamond\>\"", ",", 
+       RowBox[{"Type", "\[Rule]", "FirstBZ"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Diamond\>\"", ",", 
+       RowBox[{"LatticeConstant", "\[Rule]", "1"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"BoundaryMeshRegion", "[", 
+    RowBox[{
+     RowBox[{"GetBrillouinZone", "[", 
+      RowBox[{"\"\<Diamond\>\"", ",", 
+       RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}], ",", 
+     RowBox[{"PlotTheme", "\[Rule]", "\"\<Lines\>\""}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828706756707525*^9, 3.828706791301323*^9}, {
+  3.8287068397073293`*^9, 3.828706992020213*^9}, {3.8287080181136703`*^9, 
+  3.8287080211920085`*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"c6aaa9cd-19b6-4947-ba82-d5977c75a304"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"PlotBrillouinZone", "[", "\"\<Kagome\>\"", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"PlotBrillouinZone", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Red", ",", "\"\<Kagome\>\""}], "}"}], ",", 
+     RowBox[{"Type", "\[Rule]", "ExtendedBZ"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"PlotBrillouinZone", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Blue", ",", "Dashed", ",", "\"\<Kagome\>\""}], "}"}], ",", 
+     RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828707273847658*^9, 3.8287073313796005`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"708aa2af-95b1-44cb-8f8a-272b6fd08c6d"],
+
+Cell[BoxData[
+ RowBox[{"PlotBrillouinZone", "[", 
+  RowBox[{"\"\<Kagome\>\"", ",", 
+   RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828707383770089*^9, 3.828707390285593*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"3a96c513-7379-4415-a0fb-174d5d939d55"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"PlotBrillouinZone3D", "[", "\"\<Hyperkagome\>\"", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"PlotBrillouinZone3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Red", ",", "\"\<Hyperkagome\>\""}], "}"}], ",", 
+     RowBox[{"Type", "\[Rule]", "ExtendedBZ"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"PlotBrillouinZone3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Blue", ",", "Dashed", ",", "\"\<Hyperkagome\>\""}], "}"}], ",", 
+     RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828707348691763*^9, 3.828707364035825*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"041538f9-544e-4edb-b942-afbf07b628d5"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone", "[", "\"\<Honeycomb\>\"", "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization", "[", 
+         RowBox[{"\"\<Honeycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "8"}]}], "]"}]}], "]"}]}], "]"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone", "[", "\"\<Honeycomb\>\"", "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization", "[", 
+         RowBox[{"\"\<Honeycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "16"}]}], "]"}]}], "]"}]}], "]"}],
+     ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone", "[", "\"\<Honeycomb\>\"", "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization", "[", 
+         RowBox[{"\"\<Honeycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "16"}], ",", 
+          RowBox[{"ClippingStyle", "\[Rule]", "None"}]}], "]"}]}], "]"}]}], 
+     "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone", "[", "\"\<Honeycomb\>\"", "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization", "[", 
+         RowBox[{"\"\<Honeycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "16"}], ",", 
+          RowBox[{"Type", "\[Rule]", "ExtendedBZ"}]}], "]"}]}], "]"}]}], 
+     "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone", "[", "\"\<Honeycomb\>\"", "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization", "[", 
+         RowBox[{"\"\<Honeycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "16"}], ",", 
+          RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}]}], "]"}]}], 
+     "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.8287074239575453`*^9, 3.828707566457537*^9}, {
+  3.828707754785754*^9, 3.828707783691516*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"ecd5ab05-13ca-4da6-8bc4-b89c6560ec4d"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone3D", "[", "\"\<Hyperhoneycomb\>\"", "]"}], 
+      ",", 
+      RowBox[{"Graphics3D", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization3D", "[", 
+         RowBox[{"\"\<Hyperhoneycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "4"}]}], "]"}]}], "]"}]}], "]"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone3D", "[", "\"\<Hyperhoneycomb\>\"", "]"}], 
+      ",", 
+      RowBox[{"Graphics3D", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization3D", "[", 
+         RowBox[{"\"\<Hyperhoneycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "8"}]}], "]"}]}], "]"}]}], "]"}], 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone3D", "[", "\"\<Hyperhoneycomb\>\"", "]"}], 
+      ",", 
+      RowBox[{"Graphics3D", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization3D", "[", 
+         RowBox[{"\"\<Hyperhoneycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "8"}], ",", 
+          RowBox[{"ClippingStyle", "\[Rule]", "None"}]}], "]"}]}], "]"}]}], 
+     "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone3D", "[", "\"\<Hyperhoneycomb\>\"", "]"}], 
+      ",", 
+      RowBox[{"Graphics3D", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization3D", "[", 
+         RowBox[{"\"\<Hyperhoneycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "8"}], ",", 
+          RowBox[{"Type", "\[Rule]", "ExtendedBZ"}]}], "]"}]}], "]"}]}], 
+     "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotBrillouinZone3D", "[", "\"\<Hyperhoneycomb\>\"", "]"}], 
+      ",", 
+      RowBox[{"Graphics3D", "[", 
+       RowBox[{"Point", "/@", 
+        RowBox[{"GetBrillouinZoneDiscretization3D", "[", 
+         RowBox[{"\"\<Hyperhoneycomb\>\"", ",", 
+          RowBox[{"LatticeSize", "\[Rule]", "8"}], ",", 
+          RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}]}], "]"}]}], 
+     "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828707599996751*^9, 3.828707637941807*^9}, {
+  3.828707691691708*^9, 3.828707739676057*^9}, {3.828707787691498*^9, 
+  3.828707787816562*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"5a151924-5de2-4256-9f9d-5cb371a9741e"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotLattice", "[", 
+     RowBox[{"\"\<Triangular\>\"", ",", 
+      RowBox[{"LatticeRange", "\[Rule]", "2"}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotLattice", "[", 
+     RowBox[{"\"\<Triangular\>\"", ",", 
+      RowBox[{"LatticeRange", "\[Rule]", "4"}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotLattice", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", "\"\<Triangular\>\""}], "}"}], ",", 
+        RowBox[{"LatticeRange", "\[Rule]", "4"}]}], "]"}], ",", 
+      RowBox[{"PlotLattice", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "\"\<Triangular\>\""}], "}"}], ",", 
+        RowBox[{"LatticeRange", "\[Rule]", "4"}], ",", 
+        RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828707820504569*^9, 3.828707910098173*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"5b913d5f-11f8-43ae-84bf-899e32c97647"],
+
+Cell[BoxData[
+ RowBox[{"GraphicsRow", "[", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PlotLattice3D", "[", 
+     RowBox[{"\"\<Cubic\>\"", ",", 
+      RowBox[{"LatticeRange", "\[Rule]", "2"}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"PlotLattice3D", "[", 
+     RowBox[{"\"\<Cubic\>\"", ",", 
+      RowBox[{"LatticeRange", "\[Rule]", "4"}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"PlotLattice3D", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", "\"\<Cubic\>\""}], "}"}], ",", 
+        RowBox[{"LatticeRange", "\[Rule]", "4"}]}], "]"}], ",", 
+      RowBox[{"PlotLattice3D", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Red", ",", "Thick", ",", "\"\<Cubic\>\""}], "}"}], ",", 
+        RowBox[{"LatticeRange", "\[Rule]", "4"}], ",", 
+        RowBox[{"LatticeConstant", "\[Rule]", "2"}]}], "]"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "}"}], "]"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.828707929238652*^9, 3.8287079857071886`*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"4aa2ba2b-905d-47bc-bbf4-95558350801d"]
+},
+WindowSize->{1920, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1026, 21, 83, "Input",ExpressionUUID->"152a9ad4-2d13-4b29-88ff-0afe687f3f7b",
+ InitializationCell->True],
+Cell[1587, 43, 520, 11, 83, "Input",ExpressionUUID->"6c50ab4b-f2c6-4393-9e08-bd716e818d17",
+ InitializationCell->True],
+Cell[2110, 56, 1298, 33, 140, "Input",ExpressionUUID->"37287c65-458e-4e80-83f6-237362cea49c",
+ InitializationCell->True],
+Cell[3411, 91, 2963, 69, 330, "Input",ExpressionUUID->"c6aaa9cd-19b6-4947-ba82-d5977c75a304",
+ InitializationCell->True],
+Cell[6377, 162, 807, 19, 121, "Input",ExpressionUUID->"708aa2af-95b1-44cb-8f8a-272b6fd08c6d",
+ InitializationCell->True],
+Cell[7187, 183, 314, 6, 44, "Input",ExpressionUUID->"3a96c513-7379-4415-a0fb-174d5d939d55",
+ InitializationCell->True],
+Cell[7504, 191, 826, 19, 121, "Input",ExpressionUUID->"041538f9-544e-4edb-b942-afbf07b628d5",
+ InitializationCell->True],
+Cell[8333, 212, 2471, 55, 159, "Input",ExpressionUUID->"ecd5ab05-13ca-4da6-8bc4-b89c6560ec4d",
+ InitializationCell->True],
+Cell[10807, 269, 2629, 61, 159, "Input",ExpressionUUID->"5a151924-5de2-4256-9f9d-5cb371a9741e",
+ InitializationCell->True],
+Cell[13439, 332, 1162, 28, 121, "Input",ExpressionUUID->"5b913d5f-11f8-43ae-84bf-899e32c97647",
+ InitializationCell->True],
+Cell[14604, 362, 1166, 28, 121, "Input",ExpressionUUID->"4aa2ba2b-905d-47bc-bbf4-95558350801d",
+ InitializationCell->True]
+}
+]
+*)
+
